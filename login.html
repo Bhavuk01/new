@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="login.css">
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Stake-com-logo-high-res.jpg/800px-Stake-com-logo-high-res.jpg" type="image/png">
+  <meta name="description" content="Discover the latest hacks for Stake gambling! Get free access to Stake mine game hacks and elevate your gaming experience. Join now for unlimited rewards and modded APKs.">
+  <title>Mine Hack - Login | Stake Hack, Mod APK, Login</title>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const isLoggedIn = sessionStorage.getItem('loggedIn');
+      if (isLoggedIn) {
+        window.location.href = 'login.html';
+      }
+
+      const loginForm = document.getElementById('loginForm');
+      loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const password = document.getElementById('password').value;
+
+        fetch('https://back-game-3.onrender.com/api/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ key: password }),
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              sessionStorage.setItem('loggedIn', 'true');
+              sessionStorage.setItem('expirationTime', data.expirationTime);
+              window.location.href = 'home.html';
+            } else {
+              alert(data.message || 'Login failed');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="main">
+    <div class="info-text">
+      <p> Please wait 1-2 minutes as it may take some time to validate your key due to a high volume of user logins right now.</p>
+    </div>
+
+    <form class="form" id="loginForm">
+      <div class="form-title"><span>Login in to your</span></div>
+      <div class="title-2"><span>Account</span></div>
+      <div class="input-container">
+        <input class="input-pwd" type="password" id="password" placeholder="Enter Key">
+      </div>
+      <button type="submit" class="submit">
+        <span class="sign-text">Sign in</span>
+      </button>
+      <p class="signup-link">
+        No Key?
+        <a href="https://www.instagram.com/stake.hacks/" class="up">buy Now!</a>
+      </p>
+    </form>
+  </div>
+  
+  <div id="noticeModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Disclaimer Notice</h2>
+      <p>By using this service, you acknowledge and agree that:</p>
+      <ul>
+        <p>By accessing or using the services provided by our platform, you acknowledge and agree to the following terms and conditions:</p>
+        <p>1. Our service provides a random prediction tool for entertainment and educational purposes only. We do not guarantee any accuracy or outcomes from the use of this tool.</p>
+        <p>2. You understand and accept that gambling involves risk, and you may face both losses and wins based on luck. Our tool does not provide any guarantees of profits.</p>
+        <p>3. We strongly advise users to use caution and discretion while using the tool. It is your responsibility to manage your betting activities and funds wisely.</p>
+        <p>4. It is recommended to read and understand our provided strategy guide before using the tool. Click <a href="https://minehack.onrender.com/FAQ.html">here</a> to access the strategy guide.</p>
+        <p>5. We recommend limiting your bets to a maximum of 10 Rs to minimize potential losses. We specifically advise against high-stakes betting as it may result in significant financial loss.</p>
+        <p>6. We advise users to bet conservatively, preferably 1 Rs with 1 or 2 mines. Betting beyond this recommendation is at your own risk.</p>
+        <p>7. We are not responsible for any financial losses incurred while using our service. The use of our tool is entirely at your own risk, and we disclaim any liability for losses or damages.</p>
+        <p>8. We reserve the right to modify or terminate the service at any time without prior notice. We also reserve the right to restrict or terminate access to users who violate these terms and conditions.</p>
+        <p>9. By using our service, you agree to indemnify and hold harmless the service provider from any claims, losses, or damages arising out of or related to your use of the service.</p>
+        <p>10. We do not endorse or encourage irresponsible gambling habits. Users are encouraged to gamble responsibly and seek help if they experience any gambling-related issues.</p>
+      </ul>
+      <label><input type="checkbox" id="agreeCheckbox"> I agree to the terms and conditions above.</label>
+      <button id="proceedButton">Proceed</button>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
